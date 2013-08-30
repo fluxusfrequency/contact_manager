@@ -77,7 +77,7 @@ describe PhoneNumbersController do
         assigns(:phone_number).should be_persisted
       end
 
-      it "redirects to the created phone_number" do
+      it "redirects to the created phone_number's person" do
         post :create, {:phone_number => valid_attributes}, valid_session
         response.should redirect_to(alice)
       end
