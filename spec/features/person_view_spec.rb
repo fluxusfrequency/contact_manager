@@ -23,7 +23,6 @@ describe 'the person view', type: :feature do
   end
 
   it 'adds a new phone number' do
-    pending
     page.click_link('Add phone number')
     page.fill_in('Number', with: '555-8888')
     page.click_button('Create Phone number')
