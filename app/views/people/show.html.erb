@@ -20,7 +20,10 @@
 
 <ul>
   <% @person.email_addresses.each do |email| %>
-    <li><%= email.address %></li>
+    <li><%= email.address %>
+      <%= link_to('edit', edit_email_address_path(email)) %>
+    </li>
+
   <% end %>
 </ul>
 
