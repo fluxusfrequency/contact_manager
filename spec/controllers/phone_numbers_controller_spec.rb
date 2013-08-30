@@ -63,8 +63,10 @@ describe PhoneNumbersController do
 
   describe "POST create" do
     describe "with valid params" do
+
       let(:alice) { Person.create(first_name: 'Alice', last_name: 'Smith') }
       let (:valid_attributes) { {number: '555-8888', person_id: alice.id} }
+
       it "creates a new PhoneNumber" do
         expect {
           post :create, {:phone_number => valid_attributes}, valid_session
@@ -84,6 +86,7 @@ describe PhoneNumbersController do
     end
 
     describe "with invalid params" do
+
       it "assigns a newly created but unsaved phone_number as @phone_number" do
         # Trigger the behavior that occurs when invalid params are submitted
         PhoneNumber.any_instance.stub(:save).and_return(false)
@@ -130,6 +133,7 @@ describe PhoneNumbersController do
     end
 
     describe "with invalid params" do
+
       it "assigns the phone_number as @phone_number" do
         phone_number = PhoneNumber.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
