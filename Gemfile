@@ -9,6 +9,8 @@ gem 'unicorn'
 gem 'spork-rails'
 gem 'haml'
 gem 'html2haml'
+gem 'omniauth'
+gem 'omniauth-twitter'
 
 group :development, :test do
   gem 'rspec-rails'
