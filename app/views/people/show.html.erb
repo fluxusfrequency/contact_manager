@@ -10,13 +10,7 @@
   <%= @person.last_name %>
 </p>
 
-<ul>
-  <% @person.phone_numbers.each do |phone| %>
-    <li><%= phone.number %>
-      <%= link_to('edit', edit_phone_number_path(phone)) %>
-      <%= link_to('delete', phone, method: :delete, data: {confirm: "Are you sure you want to delete this phone number?"} ) %></li>
-  <% end %>
-</ul>
+<%= render 'phone_numbers/phone_numbers', :phone_numbers => @person.phone_numbers %>
 
 <ul>
   <% @person.email_addresses.each do |email| %>
