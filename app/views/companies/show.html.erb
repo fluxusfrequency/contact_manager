@@ -1,15 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @company.name %>
-</p>
+<div class="company">
+  <ul class="actions">
+    <li><%= link_to "Edit", edit_company_path(@company) %></li>
+    <li><%= link_to "Destroy", @company, :confirm => 'Are you sure?', :method => :delete %></li>
+    <li><%= link_to "View All", companies_path %></li>
+  </ul>
+
+<h1> <%= @company.name %> </h1>
 
 <%= render 'phone_numbers/phone_numbers', :phone_numbers => @company.phone_numbers %>
+<%= link_to 'Add phone number', new_phone_number_path(contact_id: @company.id, contact_type: 'Company') %>
 
 <%= render 'email_addresses/email_addresses', :email_addresses => @company.email_addresses %>
+<%= link_to 'Add email address', new_email_address_path(contact_id: @company.id, contact_type: 'Company') %>
 
-<%= link_to 'Add phone number', new_phone_number_path(contact_id: @company.id, contact_type: 'Company') %> |
-<%= link_to 'Add email address', new_email_address_path(contact_id: @company.id, contact_type: 'Company') %> |
-<%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_path %>
+</div>
