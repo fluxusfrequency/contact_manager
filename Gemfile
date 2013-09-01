@@ -18,6 +18,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'capybara'
   gem 'rb-fsevent', :require => false
+  gem 'fabrication'
 end
 
 group :production do

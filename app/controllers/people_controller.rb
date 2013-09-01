@@ -3,7 +3,7 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    @people = Person.all
+    @people = current_user.people
 
     respond_to do |format|
       format.html # index.html.erb
@@ -39,6 +39,7 @@ class PeopleController < ApplicationController
   # POST /people.json
   def create
     @person = Person.new(params[:person])
+    @person.user = current_user
 
     respond_to do |format|
       if @person.save
@@ -78,7 +79,7 @@ class PeopleController < ApplicationController
 
   private
   def lookup_person
-    @person = Person.find(params[:id])
+    @person = current_user.people.find(params[:id])
   end
 
 end

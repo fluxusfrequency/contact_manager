@@ -1,0 +1,16 @@
+<p>
+  <b>Name:</b>
+  <%= @company.name %>
+</p>
+
+<ul>
+  <%= render 'phone_numbers/phone_numbers', phone_numbers: @company.phone_numbers %>
+  <%= render 'email_addresses/email_addresses', email_addresses: @company.email_addresses %>
+</ul>
+
+<ul>
+  <li><%= link_to 'Add email id', new_email_address_path(contact_id: @company.id, contact_type: 'Company'), class: 'actions' %> |</li>
+  <li><%= link_to 'Add Phone number', new_phone_number_path(contact_id: @company.id, contact_type: 'Company'), class: 'actions' %> |</li>
+  <li><%= link_to 'Edit', edit_company_path(@company), class: 'actions' %> |</li>
+  <li><%= link_to 'Back', companies_path, class: 'actions' %></li>
+</ul>

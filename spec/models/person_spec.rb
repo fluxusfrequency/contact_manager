@@ -2,9 +2,7 @@ require 'spec_helper'
 
 describe Person do
 
-  let(:person) do
-    Person.new(first_name: 'Alice', last_name: 'Smith')
-  end
+  let(:person) { Fabricate(:person) }
 
   it 'is valid' do
     expect(person).to be_valid

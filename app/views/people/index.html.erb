@@ -11,7 +11,7 @@
 
 <% @people.each do |person| %>
   <tr>
-    <td><%= person.first_name %> <%= person.last_name %></td>
+    <td><%= person.last_name %>, <%= person.first_name %> </td>
     <td><ul class='actions'>
         <li><%= link_to 'Show', person %></li>
         <li><%= link_to 'Edit', edit_person_path(person) %></li>

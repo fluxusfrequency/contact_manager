@@ -3,17 +3,18 @@
 %table
   %tr
     %th Name
-    %th Actions
+    %th
 
-- @companies.each do |company|
+
+-@companies.each do |company|
   %tr
-    %td= company.name
+    %td=company.name
     %td
       %ul
-        %li= link_to 'Show', company
-        %li= link_to 'Edit', edit_company_path(company)
-        %li= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' }
+        %li=link_to 'Show', company, class: 'actions'
+        %li=link_to 'Edit', edit_company_path(company), class: 'actions' \
+        %li=link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' }, class: 'actions'
 
 %br
 
-= link_to 'New Company', new_company_path, id: "new_company"
+=link_to 'New Company', new_company_path, id: 'new_company'
