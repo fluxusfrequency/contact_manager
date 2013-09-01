@@ -6,7 +6,7 @@ describe SessionsController do
 
     before(:each) do
       Rails.application.routes.draw do
-        resource :sessions, :only => [:create]
+        resource :sessions, :only => [:create, :destroy]
         root to: 'site#index'
       end
     end
@@ -48,6 +48,21 @@ describe SessionsController do
       }
       user = User.create(provider: 'twitter', uid: 'prq987', name: 'Charlie Allen')
       post :create
+      expect(response).to redirect_to(root_path)
+    end
+
+  end
+
+  describe 'destroy' do
+
+    it 'removes a user id after destroy' do
+      delete :destroy
+      expect(User.count).to eq(0)
+    end
+
+    it "redirects to the companies page" do
+      delete :destroy
+      expect(User.count).to eq(0)
       expect(response).to redirect_to(root_path)
     end
 

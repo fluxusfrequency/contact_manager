@@ -13,9 +13,11 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 
 group :development, :test do
+  gem 'listen'
   gem 'rspec-rails'
   gem 'sqlite3'
   gem 'capybara'
+  gem 'rb-fsevent', :require => false
 end
 
 group :production do
