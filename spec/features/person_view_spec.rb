@@ -18,16 +18,16 @@ describe 'the person view', type: :feature do
 
     it 'shows the phone numbers' do
       person.phone_numbers.each do |phone|
-        expect(page).to have_content(phone.number)
+      expect(page).to have_content(phone.number)
       end
     end
 
     it 'has a link to add a new phone number' do
-      expect(page).to have_link('Add phone number', href: new_phone_number_path(contact_id: person.id, contact_type: 'Person'))
+      expect(page).to have_link('Add Phone Number', href: new_phone_number_path(contact_id: person.id, contact_type: 'Person'))
     end
 
     it 'adds a new phone number' do
-      page.click_link('Add phone number')
+      page.click_link('Add Phone Number')
       page.fill_in('Number', with: '555-8888')
       page.click_button('Create Phone number')
       expect(current_path).to eq(person_path(person))
@@ -36,7 +36,7 @@ describe 'the person view', type: :feature do
 
     it 'has links to edit phone numbers' do
       person.phone_numbers.each do |phone|
-        expect(page).to have_link('edit', href: edit_phone_number_path(phone))
+        expect(page).to have_link('Edit', href: edit_phone_number_path(phone))
       end
     end
 
@@ -44,7 +44,7 @@ describe 'the person view', type: :feature do
       phone = person.phone_numbers.first
       old_number = phone.number
 
-      first(:link, 'edit').click
+      first(:link, 'Edit').click
       page.fill_in('Number', with: '555-9191')
       page.click_button('Update Phone number')
       expect(current_path).to eq(person_path(person))
@@ -54,7 +54,7 @@ describe 'the person view', type: :feature do
 
     it 'has links to delete phone numbers' do
       person.phone_numbers.each do |phone|
-        expect(page).to have_link('delete')
+        expect(page).to have_link('Delete')
       end
     end
 
@@ -79,11 +79,11 @@ describe 'the person view', type: :feature do
     end
 
     it 'has a link to add a new email_address' do
-      expect(page).to have_link('Add email address', href: new_email_address_path(contact_id: person.id, contact_type: 'Person'))
+      expect(page).to have_link('Add Email Address', href: new_email_address_path(contact_id: person.id, contact_type: 'Person'))
     end
 
     it 'adds a new email address' do
-      page.click_link('Add email address')
+      page.click_link('Add Email Address')
       page.fill_in('Address', with: 'alice@msn.com')
       page.click_button('Create Email address')
       expect(current_path).to eq(person_path(person))
@@ -92,7 +92,7 @@ describe 'the person view', type: :feature do
 
     it 'has links to edit email addresses' do
       person.email_addresses.each do |email|
-        expect(page).to have_link('edit', href: edit_email_address_path(email))
+        expect(page).to have_link('Edit', href: edit_email_address_path(email))
       end
     end
 
@@ -100,17 +100,17 @@ describe 'the person view', type: :feature do
       email = person.email_addresses.first
       old_email = email.address
 
-      first(:link, 'edit').click
-      page.fill_in('Address', with: 'alice@gmail.com')
+      first(:link, 'Edit').click
+      page.fill_in('Address', with: 'johndoe2@google.com')
       page.click_button('Update Email address')
       expect(current_path).to eq(person_path(person))
-      expect(page).to have_content('alice@gmail.com')
+      expect(page).to have_content('johndoe2@google.com')
       expect(page).to_not have_content(old_email)
     end
 
     it 'has links to delete email addresses' do
       person.email_addresses.each do |email|
-        expect(page).to have_link('delete')
+        expect(page).to have_link('Delete')
       end
     end
 

@@ -26,7 +26,7 @@ describe PeopleController do
   # This should return the minimal set of attributes required to create a valid
   # Person. As you add validations to Person, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "first_name" => "MyString", "last_name" => "Kh", "user_id" => user.id } }
+  let(:valid_attributes) { { "first_name" => "Alice", "last_name" => "Smith", "user_id" => user.id } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in

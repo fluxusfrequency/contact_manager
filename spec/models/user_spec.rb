@@ -8,13 +8,13 @@ describe User do
     expect(user.people).to be_instance_of(Array)
   end
 
-  it 'builds associate people' do
-    person1 = Fabricate :person
-    person2 = Fabricate :person
-    [person1, person2].each do |person|
-      expect(user.people).not_to include person
+  it 'builds associated people' do
+    person_1 = Fabricate(:person)
+    person_2 = Fabricate(:person)
+    [person_1, person_2].each do |person|
+      expect(user.people).not_to include(person)
       user.people << person
-      expect(user.people).to include person
+      expect(user.people).to include(person)
     end
   end
 

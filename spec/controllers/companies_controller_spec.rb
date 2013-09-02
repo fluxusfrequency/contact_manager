@@ -26,7 +26,7 @@ describe CompaniesController do
   # This should return the minimal set of attributes required to create a valid
   # Company. As you add validations to Company, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "name" => "MyString", "user_id" => user.id } }
+  let(:valid_attributes) { { "name" => "Google", "user_id" => user.id } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -34,18 +34,18 @@ describe CompaniesController do
   let(:valid_session) { { user_id: user.id } }
 
   describe "GET index" do
+    it "assigns the current user's companies" do
+      company = Company.create! valid_attributes.merge(user_id: user.id)
+      get :index, {}, {:user_id => user.id}
+      assigns(:companies).should eq([company])
+    end
+
     it "assigns all companies as @companies" do
       company = Company.create! valid_attributes
       get :index, {}, valid_session
       assigns(:companies).should eq([company])
     end
 
-    it "assigns the current user's people" do
-      user = User.create
-      company = Company.create! valid_attributes.merge(user_id: user.id)
-      get :index, {}, {:user_id => user.id}
-      assigns(:companies).should eq([company])
-    end
   end
 
   describe "GET show" do

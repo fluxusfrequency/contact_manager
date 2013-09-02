@@ -8,7 +8,7 @@ ContactManager::Application.routes.draw do
 
   get '/auth/:provider/callback' => 'sessions#create'
   match "/login" => redirect("/auth/twitter"), as: :login
-  delete "/logout" => "sessions#destroy", as: :logout
+  match "/logout" => "sessions#destroy", as: :logout
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

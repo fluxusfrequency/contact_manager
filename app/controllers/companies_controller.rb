@@ -78,6 +78,6 @@ class CompaniesController < ApplicationController
 
   private
   def lookup_company
-    @company = Company.find(params[:id])
+    @company = current_user.companies.find(params[:id])
   end
 end
